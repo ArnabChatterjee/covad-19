@@ -1,15 +1,21 @@
 import React from 'react';
 
-function Search() {
+export function Input(props) {
     return (
-        <div className="search">
-            <h2 className="search-title">Where are you going?</h2>
-            <form className="search-form">
-                <input className="search-field" placeholder="search"></input>
-                <button className="submit-btn" type="submit">Go</button>
-            </form>
-        </div>
+        <input className="search-field" placeholder="search" {...props}></input>
+    );
+  }
+
+export function Form(props) {
+    return (
+        <form className="search-form">
+            {props.children}
+        </form>
     );
 }
 
-export default Search;
+export function FormBtn(props) {
+    return (
+    <button className="submit-btn" type="submit">Go</button>
+    )
+}
