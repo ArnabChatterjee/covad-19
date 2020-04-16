@@ -62,13 +62,13 @@ class App extends Component {
             </Form>
         </div>
 
-        {(this.state.locations).length > 0? (this.state.locations).map(e => 
+        {(this.state.locations).length > 0? (this.state.locations).map(location => 
             <LocationCard>
                 <div className="risk-level-title">
-                    <h3>Risk Level: <RiskTitle>{e.risk}</RiskTitle></h3>
+                    <h3>Risk Level: <RiskTitle>{location.risk}</RiskTitle></h3>
                 </div>
-                <Address>{e.address}</Address>
-                <Recommendation>{e.categoryName}</Recommendation>
+                <Address>{location.address}</Address>
+                <Recommendation>{location.categoryName}</Recommendation>
             </LocationCard>
         ): (<div></div>)}
       </div>
