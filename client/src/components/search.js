@@ -16,6 +16,6 @@ export function Form(props) {
 
 export function FormBtn(props) {
     return (
-    <button className="submit-btn" type="submit">Go</button>
+    <button className="submit-btn" {...props}>Go</button>
     )
 }
