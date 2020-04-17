@@ -97,25 +97,25 @@ class App extends Component {
   </tr>
   <tr>
     <td>{location.popularTimesHistogram.Su.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+              <p>hour: {time.hour}  {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
             ))}</td>
     <td>{location.popularTimesHistogram.Mo.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+              <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
             ))}</td>
     <td>{location.popularTimesHistogram.Sa.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+              <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
             ))}</td>
             <td>{location.popularTimesHistogram.Fr.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+              <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
             ))}</td>
             <td>{location.popularTimesHistogram.Mo.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+              <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
             ))}</td>
             <td>{location.popularTimesHistogram.Mo.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+              <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
             ))}</td>
             <td>{location.popularTimesHistogram.Mo.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+              <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
             ))}</td>
   </tr>
 </table>  </div>
