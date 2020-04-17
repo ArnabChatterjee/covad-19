@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Input, FormBtn } from '../components/search';
 import { RiskTitle, Address, Recommendation, LocationCard } from '../components/location';
 import baseWebApi from '../services/baseWebApi';
+import '../App.css'
 
 class App extends Component {
   state = {
@@ -20,8 +21,10 @@ class App extends Component {
     if (this.state.input) {
       let res = baseWebApi.getLocationsRisk()
         .then(res => {
+          const data = [res.data[0]]
             this.setState({
-            locations: res.data
+             
+            locations: data
             });
             // console.log(this.state.locations[0].title);
         })
@@ -81,7 +84,45 @@ class App extends Component {
               <div className="location-title">{location.title}</div>
               <Address>{location.address}</Address>
               <Recommendation>{location.recommendation}</Recommendation>
-              <div className="week-div">
+<div>
+  <table >
+  <tr >
+    <th>sunday</th>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+  </tr>
+  <tr>
+    <td>{location.popularTimesHistogram.Su.map(time => (
+              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+            ))}</td>
+    <td>{location.popularTimesHistogram.Mo.map(time => (
+              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+            ))}</td>
+    <td>{location.popularTimesHistogram.Sa.map(time => (
+              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+            ))}</td>
+            <td>{location.popularTimesHistogram.Fr.map(time => (
+              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+            ))}</td>
+            <td>{location.popularTimesHistogram.Mo.map(time => (
+              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+            ))}</td>
+            <td>{location.popularTimesHistogram.Mo.map(time => (
+              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+            ))}</td>
+            <td>{location.popularTimesHistogram.Mo.map(time => (
+              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
+            ))}</td>
+  </tr>
+</table>  </div>
+
+
+              {/* <div className="week-div">
+
                 <div className="day" >
 
                   <h4>Sunday</h4>
@@ -152,7 +193,7 @@ class App extends Component {
                 <div className="thurs"></div>
                 <div className="fri"></div>
                 <div className="sat"></div>
-              </div>
+              </div> */}
             </LocationCard>
           ))}
           </div>
