@@ -84,41 +84,41 @@ class App extends Component {
               <div className="location-title">{location.title}</div>
               <Address>{location.address}</Address>
               <Recommendation>{location.recommendation}</Recommendation>
-<div>
-  <table >
-  <tr >
-    <th>sunday</th>
-    <th>Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
-    <th>Saturday</th>
-  </tr>
-  <tr>
-    <td>{location.popularTimesHistogram.Su.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}</td>
-    <td>{location.popularTimesHistogram.Mo.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}</td>
-    <td>{location.popularTimesHistogram.Sa.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}</td>
-            <td>{location.popularTimesHistogram.Fr.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}</td>
-            <td>{location.popularTimesHistogram.Mo.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}</td>
-            <td>{location.popularTimesHistogram.Mo.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}</td>
-            <td>{location.popularTimesHistogram.Mo.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}</td>
-  </tr>
-</table>  </div>
+            <div>
+              <table >
+              <tr >
+                <th>sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+              </tr>
+              <tr>
+                <td>{location.popularTimesHistogram.Su.map(time => (
+                          <p>hour: {time.hour}  {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
+                        ))}</td>
+                <td>{location.popularTimesHistogram.Mo.map(time => (
+                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
+                        ))}</td>
+                <td>{location.popularTimesHistogram.Sa.map(time => (
+                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
+                        ))}</td>
+                        <td>{location.popularTimesHistogram.Fr.map(time => (
+                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
+                        ))}</td>
+                        <td>{location.popularTimesHistogram.Mo.map(time => (
+                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
+                        ))}</td>
+                        <td>{location.popularTimesHistogram.Mo.map(time => (
+                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
+                        ))}</td>
+                        <td>{location.popularTimesHistogram.Mo.map(time => (
+                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
+                        ))}</td>
+              </tr>
+            </table>  </div>
 
 
               {/* <div className="week-div">
