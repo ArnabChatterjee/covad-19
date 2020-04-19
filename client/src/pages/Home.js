@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Input, FormBtn } from '../components/search';
 import { RiskTitle, Address, Recommendation, LocationCard } from '../components/location';
 import baseWebApi from '../services/baseWebApi';
+import DenceTable from '../components/DenceTable';
 import '../App.css'
 
 class App extends Component {
@@ -15,18 +16,16 @@ class App extends Component {
     this.setState({ input: value });
   }
 
-
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.input) {
-      let res = baseWebApi.getLocationsRisk()
+      baseWebApi.getLocationsRisk()
         .then(res => {
           const data = [res.data[0]]
             this.setState({
-             
-            locations: data
+              input: '',
+              locations: data
             });
-            // console.log(this.state.locations[0].title);
         })
         .catch(error => {
           let errorCode = error.status;
@@ -43,15 +42,7 @@ class App extends Component {
           }
           console.log(error);
         }
-        )
-      // this.setState({
-      //   locations: [{
-      //     "title":"Walmart",
-      //     "address": "1871 Chamblee Tucker Rd, Chamblee, GA 30341",
-      //     "recommendation":"watson recommendation placeholder",
-      //     "risk":"Medium"
-      //   }]
-      // });
+      )
     }
   };
 
@@ -59,145 +50,34 @@ class App extends Component {
     return (
       <div className="app">
         <div className="container">
+          {/* search form */}
           <div className="search">
             <h2 className="search-title">Where are you going?</h2>
-            <Form>
+            <Form handleFormSubmit={this.handleFormSubmit}>
               <Input
                 value={this.state.input}
                 onChange={this.handleInputChange}>
               </Input>
-              <FormBtn
-                type="submit"
-                onClick={this.handleFormSubmit}>
-              </FormBtn>
+              <FormBtn/>
             </Form>
           </div>
-
+          {/* details table */}
           {this.state.locations.length ? (
             <div>
-            {this.state.locations.map(location => (
-            <LocationCard key={location.address}>
-              <div className="risk-level-title">
-                {/* <h3>Current Risk Level: <RiskTitle>{location.risk}</RiskTitle></h3> */}
-                <h3>Current Risk Level: <RiskTitle>Medium</RiskTitle></h3>
-              </div>
-              <div className="location-title">{location.title}</div>
-              <Address>{location.address}</Address>
-              <Recommendation>{location.recommendation}</Recommendation>
-            <div>
-              <table >
-              <tr >
-                <th>sunday</th>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
-              </tr>
-              <tr>
-                <td>{location.popularTimesHistogram.Su.map(time => (
-                          <p>hour: {time.hour}  {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
-                        ))}</td>
-                <td>{location.popularTimesHistogram.Mo.map(time => (
-                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
-                        ))}</td>
-                <td>{location.popularTimesHistogram.Sa.map(time => (
-                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
-                        ))}</td>
-                        <td>{location.popularTimesHistogram.Fr.map(time => (
-                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
-                        ))}</td>
-                        <td>{location.popularTimesHistogram.Mo.map(time => (
-                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
-                        ))}</td>
-                        <td>{location.popularTimesHistogram.Mo.map(time => (
-                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
-                        ))}</td>
-                        <td>{location.popularTimesHistogram.Mo.map(time => (
-                          <p>hour: {time.hour} {time.occupancyPercent< 30? 'low':time.occupancyPercent<60?"Medium":"High"}</p>
-                        ))}</td>
-              </tr>
-            </table>  </div>
-
-
-              {/* <div className="week-div">
-
-                <div className="day" >
-
-                  <h4>Sunday</h4>
-                  <div>
-            {location.popularTimesHistogram.Su.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}
-                  </div>
+              {this.state.locations.map(location => (
+              <LocationCard key={location.address}>{console.log(location)}
+                <div className="risk-level-title">
+                  <h3>Current Risk Level: <RiskTitle>{location.popularTimesLivePercent && location.popularTimesLivePercent<30?'Low':location.popularTimesLivePercent<60?'Medium':'High'}</RiskTitle></h3>
                 </div>
-
-                <div className="day" >
-                  <h4>Monday</h4>
-                  <div>
-            {location.popularTimesHistogram.Mo.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}
-                  </div>
-                </div>
-
-                <div className="day" >
-                  <h4>Tuesday</h4>
-                  <div>
-            {location.popularTimesHistogram.Tu.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}
-                  </div>
-                </div>
-
-                <div className="day" >
-                  <h4>Wednesday</h4>
-                  <div>
-            {location.popularTimesHistogram.We.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}
-                  </div>
-                </div>
-
-                <div className="day" >
-                  <h4>Thursday</h4>
-                  <div>
-            {location.popularTimesHistogram.Th.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}
-                  </div>
-                </div>
-
-                <div className="day" >
-                  <h4>Friday</h4>
-                  <div>
-            {location.popularTimesHistogram.Fr.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}
-                  </div>
-                </div>
-
-                <div className="day" >
-                  <h4>Saturday</h4>
-                  <div>
-            {location.popularTimesHistogram.Sa.map(time => (
-              <p>hour: {time.hour}, occupency: {time.occupancyPercent}%</p>
-            ))}
-                  </div>
-                </div>
-
-                <div className="mon"></div>
-                <div className="tues"></div>
-                <div className="wed"></div>
-                <div className="thurs"></div>
-                <div className="fri"></div>
-                <div className="sat"></div>
-              </div> */}
-            </LocationCard>
-          ))}
-          </div>
-     ) : (<div></div>)}
+                <div className="location-title">{location.title}</div>
+                <Address>{location.address}</Address>
+                <Recommendation>{location.recommendation}</Recommendation>
+                <DenceTable location={location}/>
+              </LocationCard>
+               )
+              )}
+            </div>
+            ) : (<div></div>)}
         </div>
       </div>
     );
