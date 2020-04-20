@@ -8,7 +8,7 @@ const TableData = props => {
     {console.log(currentTime()[0])}
     {data.map((e,i) =>  <p key={i} className={
       i%2 === 0 && currentTime()[0] === props.day && currentTime()[1] === e.hour? 'evenRow current-time':
-      i%2 === 0? 'evenRow': null}>{e.occupancyPercent}</p>)}
+      i%2 === 0? 'evenRow': null}>{e.occupancyPercent < 30? 'Low': e.occupancyPercent < 60? 'Medium': 'High'}</p>)}
   </React.Fragment>
  )
 }
