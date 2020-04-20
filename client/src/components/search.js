@@ -8,7 +8,7 @@ export function Input(props) {
 
 export function Form(props) {
     return (
-        <form className="search-form">
+        <form className="search-form" onSubmit={props.handleFormSubmit}>
             {props.children}
         </form>
     );
@@ -16,6 +16,6 @@ export function Form(props) {
 
 export function FormBtn(props) {
     return (
-    <button className="submit-btn" {...props}>Go</button>
+    <button className="submit-btn" type="submit" {...props}>Go</button>
     )
 }
