@@ -2,7 +2,7 @@ import React from 'react';
 
 export function LocationCard(props) {
     return (
-        <div className="location med-risk-border" {...props}>
+        <div className="location" {...props}>
             {props.children}
         </div>
     )
@@ -10,7 +10,7 @@ export function LocationCard(props) {
 
 export function RiskTitle(props) {
     return (
-        <span className="risk-level med-risk-title" {...props}>
+        <span className="risk-level" {...props}>
             {props.children}
         </span>
     )

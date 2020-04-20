@@ -5,10 +5,13 @@ const TableData = props => {
   const data = (props.location.popularTimesHistogram)[props.day];
  return( 
   <React.Fragment>
-    {console.log(currentTime()[0])}
     {data.map((e,i) =>  <p key={i} className={
-      i%2 === 0 && currentTime()[0] === props.day && currentTime()[1] === e.hour? 'evenRow current-time':
-      i%2 === 0? 'evenRow': null}>{e.occupancyPercent < 30? 'Low': e.occupancyPercent < 60? 'Medium': 'High'}</p>)}
+      i%2 === 0 && currentTime()[0] === props.day && currentTime()[1] === e.hour && e.occupancyPercent < 30? 'evenRow current-time low-risk-title':
+      i%2 === 0 && currentTime()[0] === props.day && currentTime()[1] === e.hour && e.occupancyPercent < 60? 'evenRow current-time med-risk-title':
+      i%2 === 0 && currentTime()[0] === props.day && currentTime()[1] === e.hour && e.occupancyPercent >= 60? 'evenRow current-time high-risk-title':
+      i%2 === 0? 'evenRow': null}>
+        {e.occupancyPercent < 30? 'Low': e.occupancyPercent < 60? 'Medium': 'High'}
+        </p>)}
   </React.Fragment>
  )
 }
@@ -24,7 +27,7 @@ export default function DenseTable(props) {
         <table>
           <thead>
             <tr className='table-header'>
-              <th>Hours/days</th>
+              <th>Time/Hour</th>
               <th>Sunday</th>
               <th>Monday</th>
               <th>Tuesday</th>
