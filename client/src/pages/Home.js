@@ -3,7 +3,6 @@ import { Form, Input, FormBtn } from '../components/search';
 import { RiskTitle, Address, Recommendation, LocationCard } from '../components/location';
 import baseWebApi from '../services/baseWebApi';
 import DenceTable from '../components/DenceTable';
-import '../App.css'
 
 class App extends Component {
   state = {
