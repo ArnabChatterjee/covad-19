@@ -9,7 +9,12 @@ const TableData = props => {
       i%2 === 0 && currentTime()[0] === props.day && currentTime()[1] === e.hour && e.occupancyPercent < 30? 'evenRow current-time low-risk-title':
       i%2 === 0 && currentTime()[0] === props.day && currentTime()[1] === e.hour && e.occupancyPercent < 60? 'evenRow current-time med-risk-title':
       i%2 === 0 && currentTime()[0] === props.day && currentTime()[1] === e.hour && e.occupancyPercent >= 60? 'evenRow current-time high-risk-title':
-      i%2 === 0? 'evenRow': null}>
+      i%2 === 0? 'evenRow': 
+      i%2 !== 0 && currentTime()[0] === props.day && currentTime()[1] === e.hour && e.occupancyPercent < 30? ' current-time low-risk-title':
+      i%2 !== 0 && currentTime()[0] === props.day && currentTime()[1] === e.hour && e.occupancyPercent < 60? ' current-time med-risk-title':
+      i%2 !== 0 && currentTime()[0] === props.day && currentTime()[1] === e.hour && e.occupancyPercent >= 60? ' current-time high-risk-title':
+      null
+      }>
         {e.occupancyPercent < 30? 'Low': e.occupancyPercent < 60? 'Medium': 'High'}
         </p>)}
   </React.Fragment>
