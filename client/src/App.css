@@ -196,6 +196,13 @@ th, td {
 }
 
 .current-time{
-  color: red;
   font-weight: bold;
+}
+
+.Low{
+  color: #0d9a2e;
+}
+
+.Medium{
+  color: #ef8700;
 }
