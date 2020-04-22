@@ -75,6 +75,7 @@ h1 {
 .search {
   width: 80%;
   margin: auto;
+  padding-bottom: 25px;
 }
 
 .search-title {
@@ -122,7 +123,7 @@ h1 {
 .location {
   width: auto;
   padding: 1.5rem;
-  margin: 5rem auto;
+  margin: 0 auto 5rem auto;
   margin-left: 5%;
   margin-right: 5%;
   border-style: solid;
@@ -140,10 +141,14 @@ h1 {
 .location-title {
   text-decoration: underline;
   line-height: 1.5;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .address {
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+  text-align: center;
 }
 
 .low-risk-border {
