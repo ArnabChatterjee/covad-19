@@ -2,7 +2,7 @@ import React from 'react';
 
 export function LocationCard(props) {
     return (
-        <div className="location" {...props}>
+        <div className="location"  {...props}>
             {props.children}
         </div>
     )

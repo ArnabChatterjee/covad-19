@@ -125,9 +125,6 @@ h1 {
   margin: 5rem auto;
   margin-left: 5%;
   margin-right: 5%;
-  border-style: solid;
-  border-width: 5px;
-  border-radius: 10px;
 }
 
 .risk-level-title {
@@ -151,6 +148,7 @@ h1 {
 }
 
 .low-risk-title {
+
   color: #0d9a2e;
 }
 
@@ -159,7 +157,7 @@ h1 {
 }
 
 .med-risk-border {
-  border-color: #ef8700;
+  border-color: transparent;
 }
 
 .high-risk-title {
@@ -197,6 +195,7 @@ th, td {
 
 .current-time{
   font-weight: bold;
+  border: 2px solid black;
 }
 
 .Low{

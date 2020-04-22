@@ -67,22 +67,27 @@ class App extends Component {
           {/* details table */}
           {this.state.locations.length ? (
             <div>
-              {this.state.locations.map(location => (
-                <div>
-                  <LocationCard key={location.address} className={location.popularTimesLivePercent && location.popularTimesLivePercent < 30 ? 'location low-risk-border' : location.popularTimesLivePercent < 60 ? 'location med-risk-border' : 'location high-risk-border'}>
-                    <div className={location.popularTimesLivePercent && location.popularTimesLivePercent < 30 ? 'risk-level-title low-risk-title' : location.popularTimesLivePercent < 60 ? 'risk-level-title med-risk-title' : 'risk-level-title high-risk-title'}>
-                      <h3>Current Risk Level: <RiskTitle>{location.popularTimesLivePercent && location.popularTimesLivePercent < 30 ? 'Low' : location.popularTimesLivePercent < 60 ? 'Medium' : 'High'}</RiskTitle></h3>
-                    </div>
-                    <div className="location-title">{location.title}</div>
-                    <Address>{location.address}</Address>
-                    <Recommendation>{location.recommendation}</Recommendation>
-                    <DenseTable location={location} />
-                  </LocationCard>
-                </div>
-              )
+            {this.state.locations.map(location => (
+            <LocationCard key={location.address}>
+              <div className="risk-level-title">
+                <h3>Current Risk Level: 
+                  <RiskTitle>
+                    <h3 style={{color:`${location.popularTimesLivePercent < 30? '#0d9a2e': 
+                         location.popularTimesLivePercent < 60? '#ef8700':'#c30017'}`}}>
+                          {location.popularTimesLivePercent<30?'Low':
+                          location.popularTimesLivePercent<60?'Medium':'Red'}</h3>
+                  </RiskTitle>
+                </h3>
+              </div>
+              <div className="location-title">{location.title}</div>
+              <Address>{location.address}</Address>
+              <Recommendation>{location.recommendation}</Recommendation>
+              <DenseTable location={location} />
+              </LocationCard>
+               )
               )}
             </div>
-          ) : (<div></div>)}
+            ) : (<div></div>)}
         </div>
       </div>
     );
