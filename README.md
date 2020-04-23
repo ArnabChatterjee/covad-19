@@ -9,6 +9,7 @@ GitHub repository for Call for Code of IBM open source application for Covid-19 
 1. [Short description](#short-description)
 1. [The architecture](#the-architecture)
 1. [Long description](#long-description)
+1. [Demo Video](#demo-video)
 1. [Getting started](#getting-started)
 1. [Built with](#built-with)
 1. [Authors](#authors)
@@ -25,13 +26,15 @@ Shopping risk calculator is a web application that calculates the minimum risk o
 
 ### The idea
 
-[https://drive.google.com/file/d/1YW2WvIu1D_2626bdOCFXMZ5sNwh9zMh_/view?usp=sharing]
-
 Goal: minimum contact between people/ find safest place and time for shopping, walking, some kind of works, hospitals and... /
 
  Google has a crowdSource API to get signals of smart phones and by calculating amount of them and the speed of these smart phones will determine traffic of roads, 
  There is another API to access Coronavirus cases in each zip code
  So we can use it to count MINIMUM population of shopping centers.
+
+ ### Demo Video
+
+ [![Watch the video](https://github.com/kmaryam27/covad-19/blob/master/assets/2.png)](https://drive.google.com/file/d/1YW2WvIu1D_2626bdOCFXMZ5sNwh9zMh_/view?usp=sharing)
 
 ## The architecture
 
