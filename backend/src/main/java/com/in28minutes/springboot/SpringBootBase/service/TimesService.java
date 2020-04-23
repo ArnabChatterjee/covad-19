@@ -5,6 +5,7 @@
  */
 package com.in28minutes.springboot.SpringBootBase.service;
 
+import com.in28minutes.springboot.SpringBootBase.utils.DataFileWriter;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -71,9 +72,10 @@ public class TimesService {
             detailJson.put("name", detail.get("name"));
             detailJson.put("address", address);
             detailJson.put("types", detail.get("types"));
+      //      detailJson.put("current_popularity", detail.get("current_popularity"));
+      //      detailJson.put("populartimes", detail.get("populartimes"));
             detailJson.put("coordinates", ((JSONObject)detail.get("geometry")).get("location"));
 
-            
             //add_optional_parameters(detail_json, detailJson, rating, rating_n, popularity, current_popularity, time_spent);
             //return detailJson;
             return get_populartimes_from_search(place_identifier);

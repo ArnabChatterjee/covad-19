@@ -6,6 +6,7 @@
 package com.in28minutes.springboot.SpringBootBase.controller;
 
 import com.in28minutes.springboot.SpringBootBase.service.TimesService;
+import com.in28minutes.springboot.SpringBootBase.utils.DataFileWriter;
 import org.json.JSONArray;
 import java.util.StringTokenizer;
 import org.json.JSONException;
@@ -41,30 +42,44 @@ public class TimesController {
     @GetMapping("/popularTimes")
     @ResponseBody
     public String getPopularTimes(@RequestParam(value = "placeId") String placeId) throws JSONException{
+        //ChIJHzaQRl8J9YgRLOzfDhkxB7k  ChIJ6XB-ZRAR9YgRB2YIjZPM9DM
+        JSONObject result = service.get_populartimes("AIzaSyA5JR_FQhzrHrFZAtjDrUtlJf1IBka9HvE", placeId);
 
-        JSONObject result = service.get_populartimes("AIzaSyA5JR_FQhzrHrFZAtjDrUtlJf1IBka9HvE", "ChIJ6XB-ZRAR9YgRB2YIjZPM9DM");
-
-        String d = result.get("d").toString().substring(4);
-        String[] split = d.split(",");
-                
-        StringBuffer total = new StringBuffer();
-        for(int i=0; i < split.length; i++){
-            total.append("\n" + i +"  " + split[i]);
-        }
-        return total.toString();//converter(result);
+        String returnArray = result.get("d").toString().substring(4);
+        returnArray = returnArray.substring(returnArray.indexOf(placeId));
+        
+        return converter(returnArray);//converter(result);
         // arrays.asList();
         // return JSONOjbect
     }
-    private String converter(JSONObject in) throws JSONException{
-      //  in.put("title", in.get("Walmart"));
-        return in.toString();
+    private String converter(String in) throws JSONException{
+        in = in.replaceAll("\\[", "");
+        in = in.replaceAll("\\]", "");
+        in = in.replaceAll("\"", "");
+        
+        String[] split = in.split(",");
+              
+        createJSON(split);
+        StringBuffer total = new StringBuffer();
+        for(int i=0; i < split.length; i++){
+            total.append( i +" : " + split[i] + "<br>");
+        }
+        return total.toString();
     }
     
-//    private JSONObject tester() throws JSONException{
-//        JSONArray jsonArr = new JSONArray("[{\"id\":[\"5\"]},{\"Tech\":[\"Java\"]}]");
-//        JSONObject jObj = new JSONObject();
-//        jObj.put("aoColumnDefs",(Object)jsonArr);
-//        return jObj;
-//    }
+   private void createJSON(String[] detail) throws JSONException{
+       JSONObject base = new JSONObject();
+       base.put("name", detail[1940]);
+       
+       JSONArray add = new JSONArray();
+       add.put(detail[1941]);
+       add.put(detail[1942]);
+       add.put(detail[1943]);
+       base.put("address", add);
+       
+       base.put("placeId", detail[0]);
+       
+       DataFileWriter.writeText(base.toString());
+    }
 
 }
