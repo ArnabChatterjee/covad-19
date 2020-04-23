@@ -107,7 +107,7 @@ public class TimesService {
 
          String data = getURLData("https://www.google.de/search?"+search_url.toString());
          data = (URLDecoder.decode(data,"UTF-8"));
-
+         System.out.println(search_url);
          //data = data.substring(4);
 
          JSONObject jData = new JSONObject(data);

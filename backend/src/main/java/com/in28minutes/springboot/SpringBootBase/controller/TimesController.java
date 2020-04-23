@@ -6,6 +6,8 @@
 package com.in28minutes.springboot.SpringBootBase.controller;
 
 import com.in28minutes.springboot.SpringBootBase.service.TimesService;
+import org.json.JSONArray;
+import java.util.StringTokenizer;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +43,28 @@ public class TimesController {
     public String getPopularTimes(@RequestParam(value = "placeId") String placeId) throws JSONException{
 
         JSONObject result = service.get_populartimes("AIzaSyA5JR_FQhzrHrFZAtjDrUtlJf1IBka9HvE", "ChIJ6XB-ZRAR9YgRB2YIjZPM9DM");
+
         String d = result.get("d").toString().substring(4);
-        return result.toString();
+        String[] split = d.split(",");
+                
+        StringBuffer total = new StringBuffer();
+        for(int i=0; i < split.length; i++){
+            total.append("\n" + i +"  " + split[i]);
+        }
+        return total.toString();//converter(result);
+        // arrays.asList();
+        // return JSONOjbect
     }
+    private String converter(JSONObject in) throws JSONException{
+      //  in.put("title", in.get("Walmart"));
+        return in.toString();
+    }
+    
+//    private JSONObject tester() throws JSONException{
+//        JSONArray jsonArr = new JSONArray("[{\"id\":[\"5\"]},{\"Tech\":[\"Java\"]}]");
+//        JSONObject jObj = new JSONObject();
+//        jObj.put("aoColumnDefs",(Object)jsonArr);
+//        return jObj;
+//    }
+
 }
