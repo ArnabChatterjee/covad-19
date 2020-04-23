@@ -21,17 +21,15 @@ Part of the World Health Organization guidance on limiting further spread of COV
 
 ### How can technology help?
 
-Shoping risk calculator is a web application that can claculate the minimum risk of coronavirus coronavirus in the supermarkets and shopping centers live and suggest times with minimum risk.
+Shopping risk calculator is a web application that calculates the minimum risk of coronavirus coronavirus in the supermarkets and shopping centers live and suggest times with minimum risk.
 
 ### The idea
 
-[![Watch the video](https://drive.google.com/file/d/14-Xy7AlDXdqITceKeIcYUPuz_MjEC5eM/view?usp=sharing)](https://www.youtube.com/watch?v=jSbDBP_mrTc)
+[https://drive.google.com/file/d/1YW2WvIu1D_2626bdOCFXMZ5sNwh9zMh_/view?usp=sharing]
 
 Goal: minimum contact between people/ find safest place and time for shopping, walking, some kind of works, hospitals and... /
 
-basic idea: There is a fun video in this section that shows a man with 99 cellphone changed an empty street to an overcrowded street in the google map.
-
- Google has a crowdSource API to get signals of smart phones and by calulate amount of them and the speed of these smart phones will determine traffic of roads, 
+ Google has a crowdSource API to get signals of smart phones and by calculating amount of them and the speed of these smart phones will determine traffic of roads, 
  There is another API to access Coronavirus cases in each zip code
  So we can use it to count MINIMUM population of shopping centers.
 
@@ -39,7 +37,7 @@ basic idea: There is a fun video in this section that shows a man with 99 cellph
 
 1. The user navigates to the site and search for a shopping center.
 2. front-end send location information for backend part.
-3. backend will serch grab data from multiple API, calculate lactions risk and returns data to front-end.
+3. backend will serch grab data from multiple API, calculates lactions risk and returns data to front-end.
 4. User can access to live data and make a decition to strat trip to the selected location or not.
 
 ## Long description
@@ -75,13 +73,13 @@ Yarn install
 
 ## Authors
 
-* **Arnab Chatterjee (Cognizant)** - *Project Manager* - [Email] (Arnab.Chatterjee6@cognizant.com)
-* **Roy Tan (Cognizant)** - *back-end developer* - [Email] (Roy.Tan2@cognizant.com> 
+* **Arnab Chatterjee (Cognizant)** -  [Email] (Arnab.Chatterjee6@cognizant.com)
+* **Roy Tan (Cognizant)** -  [Email] (Roy.Tan2@cognizant.com> 
 
-* **Maryam Keshavarz (Cognizant)** - *Front-end developer* - [Email] (Maryam.Keshavarz@cognizant.com) 
+* **Maryam Keshavarz (Cognizant)** -  [Email] (Maryam.Keshavarz@cognizant.com) 
 
-* **Nadine Hernandez (Cognizant)** - *Front-end developer* - [Email] (Nadine.Hernandez@cognizant.com)
+* **Nadine Hernandez (Cognizant)** -  [Email] (Nadine.Hernandez@cognizant.com)
 
-* **Clarke Swindell (Cognizant)** - *back-end developer* - [Email] (Clarke.Swindell@cognizant.com)
+* **Clarke Swindell (Cognizant)** -  [Email] (Clarke.Swindell@cognizant.com)
 
 
