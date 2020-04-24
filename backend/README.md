@@ -1,3 +1,6 @@
-# SpringBootBase
+# Spring Boot with Rest End Points
 
-Netbeans - If the project shows as unloadable, just run Maven clean install. 
+To run 
+mvn "-Dexec.args=-classpath %classpath com.cognizant.covid.SpringBootBaseApplication"
+
+Current API needs place id as a parameter /popularTimes?placeId=

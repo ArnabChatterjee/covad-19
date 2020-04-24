@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.SpringBootBase;
+package com.cognizant.covid;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringBootBaseApplication {
 
 	public static void main(String[] args) {
-            System.out.println("++++ SpringBootBaseApplication starting!!");
             SpringApplication.run(SpringBootBaseApplication.class, args);
 	}
 }
