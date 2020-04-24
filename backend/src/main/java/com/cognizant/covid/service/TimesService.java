@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cognizant.covid.service;
 
 import java.io.BufferedReader;
@@ -17,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -26,26 +22,31 @@ import com.cognizant.covid.beans.PopularTimes;
 
 @Service
 public class TimesService {
-	private String BASE_URL = "https://maps.googleapis.com/maps/api/place/";
+	private static String BASE_URL = "https://maps.googleapis.com/maps/api/place/";
 
-	private String DETAIL_URL = BASE_URL + "details/json?placeid=%1$s&key=%2$s";
+	private static String DETAIL_URL = BASE_URL + "details/json?placeid=%1$s&key=%2$s";
+	
+	private static String PLACE_ID = "https://maps.googleapis.com/maps/api/geocode/json?address=%1$S&key=%2$s";
 
-	public List<PopularTimes> get_populartimes(String api_key, String place_id) {
-
-		/*
-		 * sends request to detail to get a search string and uses standard proto buffer
-		 * to get additional information on the current status of popular times :return:
-		 * json details
-		 */
-
-		// places api - detail search
-		// https://developers.google.com/places/web-service/details?hl=de
-
-		String detail_str = String.format(DETAIL_URL, place_id, api_key);
-		JSONObject detail = null;
+	public List<PopularTimes> get_populartimes(String api_key, String address ) {
 		List<PopularTimes> result = null;
-
 		try {
+			String place_str = String.format(PLACE_ID, address, api_key);
+			JSONObject jsonObject = new JSONObject(getURLData(place_str));
+			JSONObject j = (JSONObject)((JSONArray)jsonObject.get("results")).get(0);
+			String place_id = j.get("place_id").toString();
+			/*
+			 * sends request to detail to get a search string and uses standard proto buffer
+			 * to get additional information on the current status of popular times :return:
+			 * json details
+			 */
+	
+			// places api - detail search
+			// https://developers.google.com/places/web-service/details?hl=de
+	
+			String detail_str = String.format(DETAIL_URL, place_id, api_key);
+			JSONObject detail = null;
+		
 			detail = (JSONObject) getResponse(detail_str).get("result");
 			result = get_populartimes_by_detail(detail, place_id);
 		} catch (MalformedURLException e) {
@@ -53,7 +54,6 @@ public class TimesService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return result;
 	}
 
@@ -152,9 +152,7 @@ public class TimesService {
 	}
 	
 	private JSONObject getResponse(String url) throws JSONException, Exception {
-
 		return new JSONObject(getURLData(url));
-
 	}
 
 	private String getURLData(String url) throws Exception {
@@ -169,8 +167,6 @@ public class TimesService {
 		con.setRequestProperty("User-Agent", "Mozilla/5.0");
 
 		int responseCode = con.getResponseCode();
-		System.out.println("\nSending 'GET' request to URL : " + url);
-		System.out.println("Response Code : " + responseCode);
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
@@ -179,7 +175,6 @@ public class TimesService {
 
 		while ((inputLine = in.readLine()) != null) {
 			response.append(inputLine);
-
 		}
 
 		in.close();
