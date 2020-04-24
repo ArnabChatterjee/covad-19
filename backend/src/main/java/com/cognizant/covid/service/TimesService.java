@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import com.cognizant.covid.beans.Occupancy;
+import com.cognizant.covid.beans.PopularTime;
 import com.cognizant.covid.beans.PopularTimes;
 
 @Service
@@ -28,10 +29,10 @@ public class TimesService {
 	
 	private static String PLACE_ID = "https://maps.googleapis.com/maps/api/geocode/json?address=%1$S&key=%2$s";
 
-	public List<PopularTimes> get_populartimes(String api_key, String address ) {
-		List<PopularTimes> result = null;
+	public PopularTime get_populartimes(String api_key, String address ) {
+		PopularTime result = null;
 		try {
-			String place_str = String.format(PLACE_ID, address, api_key);
+			String place_str = String.format(PLACE_ID, URLEncoder.encode(address), api_key);
 			JSONObject jsonObject = new JSONObject(getURLData(place_str));
 			JSONObject j = (JSONObject)((JSONArray)jsonObject.get("results")).get(0);
 			String place_id = j.get("place_id").toString();
@@ -45,9 +46,7 @@ public class TimesService {
 			// https://developers.google.com/places/web-service/details?hl=de
 	
 			String detail_str = String.format(DETAIL_URL, place_id, api_key);
-			JSONObject detail = null;
-		
-			detail = (JSONObject) getResponse(detail_str).get("result");
+			JSONObject detail = (JSONObject) getResponse(detail_str).get("result");
 			result = get_populartimes_by_detail(detail, place_id);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -57,7 +56,7 @@ public class TimesService {
 		return result;
 	}
 
-	private List<PopularTimes> get_populartimes_by_detail(JSONObject detail, String place_id) throws Exception {
+	private PopularTime get_populartimes_by_detail(JSONObject detail, String place_id) throws Exception {
 		String address = detail.getString("formatted_address");
 		String place_identifier = detail.getString("name") + " " + address;
 
@@ -71,8 +70,9 @@ public class TimesService {
 		return get_populartimes_from_search(place_identifier, place_id);
 	}
 
-	private List<PopularTimes> get_populartimes_from_search(String placeIdentifier, String place_id) throws Exception {
+	private PopularTime get_populartimes_from_search(String placeIdentifier, String place_id) throws Exception {
 		Map<String, String> paramsUrl = new HashMap<String, String>();
+		PopularTime shopTime = new PopularTime();
 		List<PopularTimes> popularTimesList = new ArrayList<PopularTimes>();
 		paramsUrl.put("tbm", "map");
 		paramsUrl.put("tch", "1");
@@ -105,6 +105,11 @@ public class TimesService {
 		d = d.substring(d.indexOf(place_id));
 		d = d.substring(d.indexOf("[[[") + 2);
 		d = d.substring(0, d.indexOf("SearchResult.TYPE"));
+		String currentPopulation = d.substring(d.lastIndexOf(",0]"));
+		currentPopulation = currentPopulation.split("\n")[3];
+		currentPopulation = currentPopulation.substring(currentPopulation.indexOf("[")+1, currentPopulation.indexOf("]"));
+		currentPopulation = currentPopulation.substring(currentPopulation.indexOf(",")+1);
+		shopTime.setCurrentOccupancy(currentPopulation);
 		d = d.substring(0, d.lastIndexOf(",0]") + 4).replaceAll("\n", "");
 		String[] days = d.split(",0\\]");
 
@@ -148,7 +153,8 @@ public class TimesService {
 			pt.setOccupancy(occList);
 			popularTimesList.add(pt);
 		}
-		return popularTimesList;
+		shopTime.setPopularTimesList(popularTimesList);
+		return shopTime;
 	}
 	
 	private JSONObject getResponse(String url) throws JSONException, Exception {
@@ -165,8 +171,6 @@ public class TimesService {
 
 		// add request header
 		con.setRequestProperty("User-Agent", "Mozilla/5.0");
-
-		int responseCode = con.getResponseCode();
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
