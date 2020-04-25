@@ -73,7 +73,6 @@ public class TimesService {
 	private PopularTime get_populartimes_from_search(String placeIdentifier, String place_id) throws Exception {
 		Map<String, String> paramsUrl = new HashMap<String, String>();
 		PopularTime shopTime = new PopularTime();
-		List<PopularTimes> popularTimesList = new ArrayList<PopularTimes>();
 		paramsUrl.put("tbm", "map");
 		paramsUrl.put("tch", "1");
 		paramsUrl.put("hl", "en");
@@ -110,41 +109,47 @@ public class TimesService {
 		currentPopulation = currentPopulation.substring(currentPopulation.indexOf("[")+1, currentPopulation.indexOf("]"));
 		currentPopulation = currentPopulation.substring(currentPopulation.indexOf(",")+1);
 		shopTime.setCurrentOccupancy(currentPopulation);
-		d = d.substring(0, d.lastIndexOf(",0]") + 4).replaceAll("\n", "");
-		String[] days = d.split(",0\\]");
-
+		buildData(shopTime, d);
+		return shopTime;
+	}
+	
+	private PopularTime buildData(PopularTime shopTime, String dataField) {
+		List<PopularTimes> popularTimesList = new ArrayList<PopularTimes>();
+		String data = dataField.substring(0,dataField.lastIndexOf(",0]")+4).replaceAll("\n", "");
+		String[] days = data.split(",0\\],");
+				
 		String weekday = "";
-		for (String day : days) {
-			switch (day.charAt(1)) {
+		for(String day : days) {
+			switch(day.charAt(1)) {
 			case '1':
-				weekday = "Su";
+				weekday= "Su";
 				break;
 			case '2':
-				weekday = "Mo";
+				weekday= "Mo";
 				break;
 			case '3':
-				weekday = "Tu";
+				weekday= "Tu";
 				break;
 			case '4':
-				weekday = "We";
+				weekday= "We";
 				break;
 			case '5':
-				weekday = "Th";
+				weekday= "Th";
 				break;
 			case '6':
-				weekday = "Fr";
+				weekday= "Fr";
 				break;
 			case '7':
-				weekday = "Sa";
+				weekday= "Sa";
 				break;
 			}
-			day = day.substring(5, day.length() - 2);
+			day = day.substring(5, day.length()-2);
 			PopularTimes pt = new PopularTimes();
 			pt.setWeekDay(weekday);
 			List<Occupancy> occList = new ArrayList<Occupancy>();
 			String[] popularTimes = day.split("\\],\\[");
-			for (String popularTime : popularTimes) {
-				String[] popularPercentage = popularTime.split(",");
+			for(String popularTime : popularTimes) {
+				String [] popularPercentage =  popularTime.split(",");
 				Occupancy o = new Occupancy();
 				o.setHour(popularPercentage[0]);
 				o.setOccupancyPercent(popularPercentage[1]);
