@@ -79,11 +79,11 @@ Yarn install
 
 ### Installing
 
-1- Clone repository to your PC
-2- Use `yarn install` or `npm install` to install dependencies
-3- Get a google API Key from https://cloud.google.com/maps-platform/?apis=map
-4- Add api key to back end 
-4- Use `yarn start` or `npm start` to run 
+1. Clone repository to your PC
+2. Use `yarn install` or `npm install` to install dependencies
+3. Get a google API Key from https://cloud.google.com/maps-platform/?apis=map
+4. Add api key to back end 
+5. Use `yarn start` or `npm start` to run 
 
 ## Built with
 
