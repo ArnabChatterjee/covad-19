@@ -50,8 +50,12 @@ public class TimesService {
 			result = get_populartimes_by_detail(detail, place_id);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
+			result = new PopularTime();
+			result.setCurrentOccupancy("-1");
 		} catch (Exception e) {
 			e.printStackTrace();
+			result = new PopularTime();
+			result.setCurrentOccupancy("-1");
 		}
 		return result;
 	}

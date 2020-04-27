@@ -1,4 +1,4 @@
-# Submission name
+# Covid Shopping Risk
 
 [![Slack](https://img.shields.io/badge/Join-Slack-blue)](https://callforcode.org/slack) [![Website](https://img.shields.io/badge/View-Website-blue)](https://github.com/ArnabChatterjee/covad-19)
 
@@ -15,7 +15,15 @@ GitHub repository for Call for Code of IBM open source application for Covid-19 
 1. [Authors](#authors)
 
 ## Short description
+This application shows the risk exposure while emergency shopping and tries to minimize
 
+## Authors
+
+* **Arnab Chatterjee (Cognizant)** -  [Email] (Arnab.Chatterjee6@cognizant.com)
+* **Roy Tan (Cognizant)** -  [Email] (Roy.Tan2@cognizant.com> 
+* **Maryam Keshavarz (Cognizant)** -  [Email] (Maryam.Keshavarz@cognizant.com) 
+* **Nadine Hernandez (Cognizant)** -  [Email] (Nadine.Hernandez@cognizant.com)
+* **Clarke Swindell (Cognizant)** -  [Email] (Clarke.Swindell@cognizant.com)
 ### What's the problem?
 
 Part of the World Health Organization guidance on limiting further spread of COVID-19 is to practice social distancing. However there are a lot of necessary duties that can not avoid them for long time such as shopping from groceries. Reduction of population who have to refer to some location and divide them to smaller group that can refer to different times will reduce the risk of Coronavirus more
@@ -45,7 +53,23 @@ Goal: minimum contact between people/ find safest place and time for shopping, w
 
 ## Long description
 
-[More detail is available here](DESCRIPTION.md)
+In the recent pandemic, CDC recommends social distancing. However, there are necessities for living. Food and medicine needs pushes a person to go to shopping. The concern here is that the exposure a person will have during the trip to various shops.
+
+The application will have a chat bot which can recommend which store nearby has the item available as well as less risk to shop around at a specific given time slot.
+
+This application will provide the historical data providing the risk exposure for shopping at different hour during the day. It will also provide the current risk for visiting the shop now.
+
+Currently we are using the data on the historical occupancy at a shop and the covid infected data in a particular zip code to provide an estimated risk of visiting a shop.
+
+Solution roadmap-
+
+Currently we do not have data for every shopper visiting the same shop. This data will help us to figure out the probability of being exposed.
+
+This will include the risk factor of social distancing in a parking lot too. As it might happen that, the shoppers at a different store might share the same parking lot. This is very common scenario for a small shopping mall with stores like Walmart and Target sharing the same parking lot.
+
+This application will provide the list of shops, which one might need to shop around for the basic needs list.
+
+It will even provide the exposure risk to the people in metro cities who would be biking or walking to do the shopping.
 
 ## Getting started
 
@@ -74,15 +98,6 @@ Yarn install
 * [google map API](https://www.google.com/maps) - back end data
 * [React](https://reactjs.org/) - Front end library
 
-## Authors
 
-* **Arnab Chatterjee (Cognizant)** -  [Email] (Arnab.Chatterjee6@cognizant.com)
-* **Roy Tan (Cognizant)** -  [Email] (Roy.Tan2@cognizant.com> 
-
-* **Maryam Keshavarz (Cognizant)** -  [Email] (Maryam.Keshavarz@cognizant.com) 
-
-* **Nadine Hernandez (Cognizant)** -  [Email] (Nadine.Hernandez@cognizant.com)
-
-* **Clarke Swindell (Cognizant)** -  [Email] (Clarke.Swindell@cognizant.com)
 
 
