@@ -61,15 +61,10 @@ public class TimesService {
 	}
 
 	private PopularTime get_populartimes_by_detail(JSONObject detail, String place_id) throws Exception {
+		// Concatinate the place_identifier String to be used in the search.
+		
 		String address = detail.getString("formatted_address");
 		String place_identifier = detail.getString("name") + " " + address;
-
-		JSONObject detailJson = new JSONObject();
-		detailJson.put("id", detail.get("place_id"));
-		detailJson.put("name", detail.get("name"));
-		detailJson.put("address", address);
-		detailJson.put("types", detail.get("types"));
-		detailJson.put("coordinates", ((JSONObject) detail.get("geometry")).get("location"));
 
 		return get_populartimes_from_search(place_identifier, place_id);
 	}
@@ -178,6 +173,9 @@ public class TimesService {
 	}
 
 	private String getURLData(String url) throws Exception {
+		/*  Create HTTP connection to get the response data 
+		*    and read it in using BufferedReader.
+		*/
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
