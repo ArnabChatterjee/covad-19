@@ -21,6 +21,6 @@ public class TimesController {
     @GetMapping("/popularTimes")
     @ResponseBody
     public PopularTime getPopularTimes(@RequestParam(value = "address") String address) throws JSONException{
-        return service.get_populartimes("AIzaSyA5JR_FQhzrHrFZAtjDrUtlJf1IBka9HvE", address);
+        return service.get_populartimes(System.getenv("API_KEY"), address);
     }
 }
