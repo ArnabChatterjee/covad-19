@@ -53,7 +53,23 @@ Goal: minimum contact between people/ find safest place and time for shopping, w
 
 ## Long description
 
-[More detail is available here](DESCRIPTION.md)
+In the recent pandemic, CDC recommends social distancing. However, there are necessities for living. Food and medicine needs pushes a person to go to shopping. The concern here is that the exposure a person will have during the trip to various shops.
+
+The application will have a chat bot which can recommend which store nearby has the item available as well as less risk to shop around at a specific given time slot.
+
+This application will provide the historical data providing the risk exposure for shopping at different hour during the day. It will also provide the current risk for visiting the shop now.
+
+Currently we are using the data on the historical occupancy at a shop and the covid infected data in a particular zip code to provide an estimated risk of visiting a shop.
+
+Solution roadmap-
+
+Currently we do not have data for every shopper visiting the same shop. This data will help us to figure out the probability of being exposed.
+
+This will include the risk factor of social distancing in a parking lot too. As it might happen that, the shoppers at a different store might share the same parking lot. This is very common scenario for a small shopping mall with stores like Walmart and Target sharing the same parking lot.
+
+This application will provide the list of shops, which one might need to shop around for the basic needs list.
+
+It will even provide the exposure risk to the people in metro cities who would be biking or walking to do the shopping.
 
 ## Getting started
 
