@@ -112,12 +112,12 @@ public class TimesService {
 		buildData(shopTime, d);
 		return shopTime;
 	}
-	
+
 	private PopularTime buildData(PopularTime shopTime, String dataField) {
 		List<PopularTimes> popularTimesList = new ArrayList<PopularTimes>();
 		String data = dataField.substring(0,dataField.lastIndexOf(",0]")+4).replaceAll("\n", "");
 		String[] days = data.split(",0\\],");
-				
+
 		String weekday = "";
 		for(String day : days) {
 			switch(day.charAt(1)) {

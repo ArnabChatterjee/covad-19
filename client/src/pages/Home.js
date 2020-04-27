@@ -8,7 +8,8 @@ class App extends Component {
   state = {
     input: '',
     locations: [],
-    pageTitle: 'Covid Shopping Risk'
+    pageTitle: 'Covid Shopping Risk',
+    singleLocation: {}
   }
 
   componentDidMount() {
@@ -23,11 +24,13 @@ class App extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.input) {
-      baseWebApi.getLocationsRisk()
+      const loc = this.state.input;
+      baseWebApi.getLocationsRisk(loc)
         .then(res => {
           this.setState({
             input: '',
-            locations: res.data
+            // locations: res.data
+            singleLocation: {...res.data, address: loc}
           });
         })
         .catch(error => {
@@ -65,7 +68,7 @@ class App extends Component {
             </Form>
           </div>
           {/* details table */}
-          {this.state.locations.length ? (
+          {/* {this.state.locations.length ? (
             <div>
             {this.state.locations.map(location => (
             <LocationCard key={location.address}>
@@ -87,7 +90,27 @@ class App extends Component {
                )
               )}
             </div>
-            ) : (<div></div>)}
+            ) : (<div></div>)} */}
+            {(this.state.singleLocation.address && this.state.singleLocation.currentOccupancy && this.state.singleLocation.currentOccupancy > 0)?
+              <LocationCard>
+              <div className="risk-level-title">
+                <h3>Current Risk Level: 
+                  <RiskTitle>
+                    <h3 style={{color:`${this.state.singleLocation.currentOccupancy < 30? '#0d9a2e': 
+                         this.state.singleLocation.currentOccupancy < 60? '#ef8700':'#c30017'}`}}>
+                          {this.state.singleLocation.currentOccupancy<30?'Low':
+                          this.state.singleLocation.currentOccupancy<60?'Medium':'Red'}</h3>
+                  </RiskTitle>
+                </h3>
+              </div>
+              <Address>{this.state.singleLocation.address}</Address>
+              <DenseTable location={this.state.singleLocation} />
+              </LocationCard>
+            : (this.state.singleLocation.address && this.state.singleLocation.currentOccupancy && this.state.singleLocation.currentOccupancy < 0)?
+            <div>Address is wrong please call with sponcers</div>
+            :
+            <div></div>
+          }
         </div>
       </div>
     );
