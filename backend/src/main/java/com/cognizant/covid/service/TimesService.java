@@ -37,8 +37,8 @@ public class TimesService {
 			JSONObject j = (JSONObject)((JSONArray)jsonObject.get("results")).get(0);
 			String place_id = j.get("place_id").toString();
 			/*
-			 * sends request to detail to get a search string and uses standard proto buffer
-			 * to get additional information on the current status of popular times :return:
+			 * sends request to detail to get a search string to get additional 
+			 * information on the current status of popular times :return:
 			 * json details
 			 */
 	
@@ -75,6 +75,10 @@ public class TimesService {
 	}
 
 	private PopularTime get_populartimes_from_search(String placeIdentifier, String place_id) throws Exception {
+		/* Taking the placeIdentifier and place_id and passing it along to the 
+		*   https://www.google.de/search? to get the details for popular times.
+		*   The paramsUrl is populated with the request parameters needed for the search.
+		*/
 		Map<String, String> paramsUrl = new HashMap<String, String>();
 		PopularTime shopTime = new PopularTime();
 		paramsUrl.put("tbm", "map");
@@ -118,6 +122,9 @@ public class TimesService {
 	}
 
 	private PopularTime buildData(PopularTime shopTime, String dataField) {
+		/* The dataField is returned as an array with nested arrays which we need to 
+		*   convert to a JSON object. 
+		*/
 		List<PopularTimes> popularTimesList = new ArrayList<PopularTimes>();
 		String data = dataField.substring(0,dataField.lastIndexOf(",0]")+4).replaceAll("\n", "");
 		String[] days = data.split(",0\\],");
