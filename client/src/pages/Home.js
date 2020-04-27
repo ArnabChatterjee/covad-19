@@ -107,7 +107,7 @@ class App extends Component {
               <DenseTable location={this.state.singleLocation} />
               </LocationCard>
             : (this.state.singleLocation.address && this.state.singleLocation.currentOccupancy && this.state.singleLocation.currentOccupancy < 0)?
-            <div>Address is wrong please call with sponcers</div>
+            <div className="risk-level-title"><h4>Address is incorrect. Please verify and enter the correct address.</h4></div>
             :
             <div></div>
           }

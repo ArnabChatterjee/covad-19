@@ -17,13 +17,6 @@ GitHub repository for Call for Code of IBM open source application for Covid-19 
 ## Short description
 This application shows the risk exposure while emergency shopping and tries to minimize
 
-## Authors
-
-* **Arnab Chatterjee (Cognizant)** -  [Email] (Arnab.Chatterjee6@cognizant.com)
-* **Roy Tan (Cognizant)** -  [Email] (Roy.Tan2@cognizant.com> 
-* **Maryam Keshavarz (Cognizant)** -  [Email] (Maryam.Keshavarz@cognizant.com) 
-* **Nadine Hernandez (Cognizant)** -  [Email] (Nadine.Hernandez@cognizant.com)
-* **Clarke Swindell (Cognizant)** -  [Email] (Clarke.Swindell@cognizant.com)
 ### What's the problem?
 
 Part of the World Health Organization guidance on limiting further spread of COVID-19 is to practice social distancing. However there are a lot of necessary duties that can not avoid them for long time such as shopping from groceries. Reduction of population who have to refer to some location and divide them to smaller group that can refer to different times will reduce the risk of Coronavirus more
@@ -90,7 +83,7 @@ Yarn install
 2- Use `yarn install` or `npm install` to install dependencies
 3- Get a google API Key from https://cloud.google.com/maps-platform/?apis=map
 4- Add api key to back end 
-4-use `yarn start` or `npm start` to run 
+4- Use `yarn start` or `npm start` to run 
 
 ## Built with
 
@@ -98,6 +91,13 @@ Yarn install
 * [google map API](https://www.google.com/maps) - back end data
 * [React](https://reactjs.org/) - Front end library
 
+## Authors
+
+* **Arnab Chatterjee (Cognizant)** -  [Email] (Arnab.Chatterjee6@cognizant.com)
+* **Roy Tan (Cognizant)** -  [Email] (Roy.Tan2@cognizant.com> 
+* **Maryam Keshavarz (Cognizant)** -  [Email] (Maryam.Keshavarz@cognizant.com) 
+* **Nadine Hernandez (Cognizant)** -  [Email] (Nadine.Hernandez@cognizant.com)
+* **Clarke Swindell (Cognizant)** -  [Email] (Clarke.Swindell@cognizant.com)
 
 
 
