@@ -75,6 +75,8 @@ What things you need to install the software and how to install them
 ```bash
 Node install 
 Yarn install
+mvn
+jdk 1.8
 ```
 
 ### Installing
@@ -82,8 +84,12 @@ Yarn install
 1. Clone repository to your PC
 2. Use `yarn install` or `npm install` to install dependencies
 3. Get a google API Key from https://cloud.google.com/maps-platform/?apis=map
-4. Add api key to back end 
-5. Use `yarn start` or `npm start` to run 
+4. Use `yarn start` or `npm start` to run
+5. Add api key to back end 
+6. export API_KEY=<value>
+7. cd backend
+8. mvn spring-boot:run
+
 
 ## Built with
 
@@ -99,6 +105,3 @@ Yarn install
 * **Maryam Keshavarz (Cognizant)** -  [Email] (Maryam.Keshavarz@cognizant.com) 
 * **Nadine Hernandez (Cognizant)** -  [Email] (Nadine.Hernandez@cognizant.com)
 * **Clarke Swindell (Cognizant)** -  [Email] (Clarke.Swindell@cognizant.com)
-
-
-
