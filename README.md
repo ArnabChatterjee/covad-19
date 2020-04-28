@@ -86,7 +86,7 @@ jdk 1.8
 3. Get a google API Key from https://cloud.google.com/maps-platform/?apis=map
 4. Use `yarn start` or `npm start` to run
 5. Add api key to back end 
-6. export API_KEY=<value>
+6. export API_KEY=<<value>>
 7. cd backend
 8. mvn spring-boot:run
 
