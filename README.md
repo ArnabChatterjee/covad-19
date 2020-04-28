@@ -90,6 +90,7 @@ Yarn install
 * [IBM Watson assistant](https://cloud.ibm.com/catalog?search=api%20connect#search_results) -for chatbot
 * [google map API](https://www.google.com/maps) - back end data
 * [React](https://reactjs.org/) - Front end library
+* Springboot - Backend
 
 ## Authors
 
