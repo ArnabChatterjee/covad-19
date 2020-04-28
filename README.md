@@ -82,11 +82,10 @@ jdk 1.8
 ### Installing
 
 1. Clone repository to your PC
-2. Use `yarn install` or `npm install` to install dependencies
-3. Get a google API Key from https://cloud.google.com/maps-platform/?apis=map
-4. Use `yarn start` or `npm start` to run
-5. Add api key to back end 
-6. export API_KEY=<<value>>
+2. cd client and Use `yarn install` or `npm install` to install dependencies
+3. Use `yarn start` or `npm start` to run
+4. Get a google API Key from https://cloud.google.com/maps-platform/?apis=map
+5. Add api key to back end using export API_KEY=<<value>>
 7. cd backend
 8. mvn spring-boot:run
 
