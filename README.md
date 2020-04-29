@@ -35,7 +35,7 @@ Goal: minimum contact between people/ find safest place and time for shopping, w
 
  ### Demo Video
 
- [![Watch the video](https://github.com/kmaryam27/covad-19/blob/master/assets/2.png)](https://drive.google.com/file/d/1YW2WvIu1D_2626bdOCFXMZ5sNwh9zMh_/view?usp=sharing)
+ [![Watch the video](https://github.com/kmaryam27/covad-19/blob/master/assets/2.png)](https://www.youtube.com/watch?v=6DmFlPJE-xE&feature=youtu.be)
 
 ## The architecture
 
